@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.2.4",
 	"appid": "wxa27a1cec69889ec9",
 	"projectname": "wx-demo",
 	"isGameTourist": false,
