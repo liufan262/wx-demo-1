@@ -1,2 +1,13 @@
 <!--pages/movies/movies.wxml-->
-<text>pages/movies/movies.wxml</text>
+<view class="container" wx:if="{{containerShow}}">
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...inTheaters}}" />
+  </view>
+
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...comingSoon}}" />
+  </view>
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...top250}}"/>
+  </view>
+</view>
