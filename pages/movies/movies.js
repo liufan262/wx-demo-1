@@ -1,6 +1,7 @@
 // pages/movies/movies.js
 
-var app = getApp()
+var util = require('../../utils/util.js')
+var app = getApp();
 
 Page({
 
@@ -55,6 +56,7 @@ Page({
                 title = title.substring(0, 6) + "...";
             }
             var temp = {
+                stars: util.convertToStarsArray(subject.rating.stars),
                 title: title,
                 average: subject.rating.average,
                 coverageUrl: subject.images.large,
