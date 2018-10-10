@@ -32,7 +32,7 @@ Page({
         this.getMovieListData(top250Url, "top250", "豆瓣Top250");
     },
 
-    getMovieListData: function (url, settedKey) {
+    getMovieListData: function (url, settedKey, categoryTitle) {
         let that = this
         wx.request({
             url: url,
@@ -40,14 +40,14 @@ Page({
             method: 'GET',
             success: function(res) {
                 console.log(res)
-                that.processDoubanData(res.data, settedKey)
+                that.processDoubanData(res.data, settedKey, categoryTitle)
             },
             fail: function() {
                 console.log('调用失败')
             }
         })
     },
-    processDoubanData: function (moviesDouban, settedKey) {
+    processDoubanData: function (moviesDouban, settedKey, categoryTitle) {
         var movies = [];
         for (var idx in moviesDouban.subjects) {
             var subject = moviesDouban.subjects[idx];
@@ -66,9 +66,16 @@ Page({
         }
         var readyData = {};
         readyData[settedKey] = {
+            categoryTitle: categoryTitle,
             movies: movies
         }
         this.setData(readyData);
         console.log(this.data)
-    }
+    },
+    onMoreTap: function (event) {
+        var category = event.currentTarget.dataset.category;
+        wx.navigateTo({
+            url: "more-movie/more-movie?category=" + category
+        })
+    },
 })
