@@ -39,6 +39,7 @@ Page({
         util.http(dataUrl, this.processDoubanData)
     },
     processDoubanData: function(moviesDouban) {
+       
         var movies = [];
         for (var idx in moviesDouban.subjects) {
             var subject = moviesDouban.subjects[idx];
@@ -60,7 +61,7 @@ Page({
             movies: movies
         });
         var totalMovies = {}
-
+        console.log(this.data.movies)
         //如果要绑定新加载的数据，那么需要同旧有的数据合并在一起
         // if (!this.data.isEmpty) {
         //     totalMovies = this.data.movies.concat(movies);
