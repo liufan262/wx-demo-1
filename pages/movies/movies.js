@@ -31,7 +31,13 @@ Page({
         this.getMovieListData(comingSoonUrl, "comingSoon", "即将上映");
         this.getMovieListData(top250Url, "top250", "豆瓣Top250");
     },
-
+    //更多跳转
+  onMoreTap: function (event) {
+    var category = event.currentTarget.dataset.category;
+    wx.navigateTo({
+      url: "more-movie/more-movie?category=" + category
+    })
+  },
     getMovieListData: function (url, settedKey, categoryTitle) {
         let that = this
         wx.request({
@@ -39,7 +45,6 @@ Page({
             data: '',
             method: 'GET',
             success: function(res) {
-                console.log(res)
                 that.processDoubanData(res.data, settedKey, categoryTitle)
             },
             fail: function() {
@@ -70,7 +75,6 @@ Page({
             movies: movies
         }
         this.setData(readyData);
-        console.log(this.data)
     },
     onMoreTap: function (event) {
         var category = event.currentTarget.dataset.category;
