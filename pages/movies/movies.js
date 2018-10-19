@@ -12,6 +12,8 @@ Page({
         inTheaters: {},
         comingSoon: {},
         top250: {},
+        containerShow: true,
+        searchPanelShow: false,
     },
 
     /**
@@ -81,5 +83,12 @@ Page({
         wx.navigateTo({
             url: "more-movie/more-movie?category=" + category
         })
+    },
+    onBindFocus: function (event) {
+        this.setData({
+            containerShow: false,
+            searchPanelShow: true
+        })
+
     },
 })
